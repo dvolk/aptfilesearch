@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <center>
+    <div style="min-width: 1000px; width: 75%;">
+
+      <h1 style="font-size: 2em;" class="protest-riot-regular">
+        <a href="{{ url_for('read_root') }}">
+          Apt file search
+        </a>
+      </h1>
+
+      <form method="GET">
+        <p>
+          <input class="w3-input w3-border roboto-regular" style="padding: 10px; padding-left: 20px; border-radius: 20px;" type="text" name="q" minlength=2 value="{{ q }}"/>
+        </p>
+        <button style="width: 150px; border-radius: 10px;" class="w3-input w3-light-gray roboto-regular" type="Submit">
+          File Search
+        </button>
+      </form>
+      <br/>
+
+
+      {% if not output %}
+        <span>
+          <h2>
+            Sorry, no results found for '{{ q }}'.
+          </h2>
+        </span>
+      {% else %}
+        <div class="roboto-regular" style="padding-left: 10px; text-align: left">
+          <h2>{{ output|length }} results for '{{ q }}':</h2>
+        </div>
+        <table style="width: 100%;">
+          {% for line in output %}
+            <tr>
+              <td>
+                <span class="roboto-regular" style="color: blue; text-align: left; border-radius: 10px; padding: 3px; padding-left: 10px; padding-right: 10px;">
+                  <a nofollow rel=noreferrer target="_blank" href="https://packages.ubuntu.com/jammy/{{ line[0] }}">
+                    {{ line[0] }}
+                  </a>
+                </span>
+              </td>
+              <td>
+                <span class="roboto-regular">
+                  {{ line[1] }}
+                </span>
+              </td>
+            {% endfor %}
+        </table>
+      {% endif %}
+
+
+    </div>
+  </center>
+{% endblock %}
