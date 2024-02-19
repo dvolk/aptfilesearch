@@ -17,7 +17,7 @@ aptfilesearch provides a web interface for searching through debian/ubuntu files
 
 ```
 apt install python3-venv apt-file
-sudo apt-file upate
+sudo apt-file update
 ```
 
 ## Installation
