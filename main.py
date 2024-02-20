@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -7,6 +8,23 @@ import shlex
 
 # Create an instance of the FastAPI class
 app = FastAPI()
+
+
+# Define a list of allowed origins for CORS
+# You can use "*" to allow all origins or be more specific to enhance security
+origins = [
+    "http://localhost:8000",  # Allow requests from a local React dev server
+    "https://aptfilesearch.oxfordfun.com",  # Adjust to your production React app's domain
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Or specify just ["GET", "POST"] if you prefer
+    allow_headers=["*"],  # You can be more specific depending on your needs
+)
+
 
 # Create an instance of Jinja2Templates and specify the directory containing the templates
 templates = Jinja2Templates(directory="templates")
