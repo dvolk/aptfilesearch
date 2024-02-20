@@ -29,6 +29,16 @@ def apt_file_search(filename_str: str) -> str:
     ]
 
 
+@app.get("/query_api")
+async def read_query_api(q: str = None):
+    if q:
+        output = {"results": apt_file_search(q)}
+    else:
+        output = {"results": []}
+
+    return output
+
+
 # Define a path operation that uses a template
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request, q: str = None):
