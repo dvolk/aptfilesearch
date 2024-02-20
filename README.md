@@ -2,14 +2,22 @@
 
 aptfilesearch provides a web interface for searching through debian/ubuntu files in all packages
 
-<img width="49%" src="https://i.imgur.com/pqgTuj4.png">
-<img width="49%" src="https://i.imgur.com/TRgvOZO.png">
+<table>
+  <tr>
+    <td>
+<img src="https://i.imgur.com/pqgTuj4.png">      
+    </td>
+    <td>
+<img src="https://i.imgur.com/TRgvOZO.png">
+    </td>
+  </tr>
+  </table>
 
 ## Prerequesites
 
 ```
 apt install python3-venv apt-file
-sudo apt-file upate
+sudo apt-file update
 ```
 
 ## Installation
